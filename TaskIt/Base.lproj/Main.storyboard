@@ -34,6 +34,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="I6k-bq-7SE"/>
+                    <connections>
+                        <outlet property="tableView" destination="fWm-Kf-q5v" id="HsR-rX-EEj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
