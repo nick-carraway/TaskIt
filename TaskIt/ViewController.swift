@@ -14,28 +14,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tableView: UITableView!
     
-    var taskArray : [Dictionary<String, String>]  = []
+    var taskArray : [TaskModel]  = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    
+        let task1:TaskModel =  TaskModel(task: "Defend America", subTask: "Kill Bill", date : "11/5/2014")
         
-        let task1:Dictionary<String, String> = ["task": "Defend America", "subtask" : "Kill Bill", "date" : "11/5/2014"]
         
-        let task2:Dictionary<String, String> = ["task": "Conquer", "subtask" : "Destroy", "date" : "Right now!"]
+        let task2:TaskModel =  TaskModel(task: "Defeat evil", subTask: "Combat Terminator", date : "NOW!!!")
 
-        let task3:Dictionary<String, String> = ["task": "Grow", "subtask" : "Train", "date" : "ASAP"]
-
         
-        taskArray = [task1, task2, task3]
+        taskArray = [task1, task2, TaskModel(task: "Exercise", subTask: "Get busy", date : "ASAP!!!")]
         
         self.tableView.reloadData()
         
-        println(task1["task"])
-        println(task1["date"])
-        
-        println(task2["task"])
-        println(task2["date"])
+   
         
     }
 
@@ -50,13 +45,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         println(indexPath.row)
         
-        let taskDict:Dictionary = taskArray[indexPath.row]
+        let thisTask = taskArray[indexPath.row]
         
         var cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("MyCell") as TaskCell
         
-        cell.taskLabel.text = taskDict["task"]
-        cell.descriptionLabel.text = taskDict["subtask"]
-        cell.dateLabel.text = taskDict["date"]
+        cell.taskLabel.text = thisTask.task
+        cell.descriptionLabel.text = thisTask.subTask
+        cell.dateLabel.text = thisTask.date
         
         return cell
         
