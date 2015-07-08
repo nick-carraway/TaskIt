@@ -71,6 +71,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // protocols are defined in another class
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println(indexPath.row)
+        
+        performSegueWithIdentifier("showTaskDetail", sender: self)      
         
     }
 }
