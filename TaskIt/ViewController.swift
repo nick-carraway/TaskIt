@@ -30,6 +30,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         var cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("MyCell") as TaskCell
         
+        cell.taskLabel.text = "Defeat evil"
+        cell.descriptionLabel.text = "Kill Bill"
+        cell.dateLabel.text = "Right fucking now."
+        
         return cell
         
     }
