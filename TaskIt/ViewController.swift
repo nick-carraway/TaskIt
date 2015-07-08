@@ -14,9 +14,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tableView: UITableView!
     
+    var taskArray : [Dictionary<String, String>]  = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let task1:Dictionary<String, String> = ["task": "Defend America", "subtask" : "Kill Bill", "date" : "11/5/2014"]
+        
+        let task2:Dictionary<String, String> = ["task": "Conquer", "subtask" : "Destroy", "date" : "Right now!"]
+
+        let task3:Dictionary<String, String> = ["task": "Grow", "subtask" : "Train", "date" : "ASAP"]
+
+        
+        taskArray = [task1, task2, task3]
+        
+        self.tableView.reloadData()
+        
+        println(task1["task"])
+        println(task1["date"])
+        
+        println(task2["task"])
+        println(task2["date"])
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,11 +48,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        println(indexPath.row)
+        
+        let taskDict:Dictionary = taskArray[indexPath.row]
+        
         var cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("MyCell") as TaskCell
         
-        cell.taskLabel.text = "Defeat evil"
-        cell.descriptionLabel.text = "Kill Bill"
-        cell.dateLabel.text = "Right fucking now."
+        cell.taskLabel.text = taskDict["task"]
+        cell.descriptionLabel.text = taskDict["subtask"]
+        cell.dateLabel.text = taskDict["date"]
         
         return cell
         
@@ -42,7 +66,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // determines number of rows that should show up in the tableview
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return taskArray.count
     }
     
     
