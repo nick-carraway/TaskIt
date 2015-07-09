@@ -25,7 +25,7 @@ class TaskDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.taskTextField.text = detailTaskModel.task
         self.subtaskTextField.text = detailTaskModel.subTask
-        
+        self.dueDatePicker.date = detailTaskModel.date
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +34,13 @@ class TaskDetailViewController: UIViewController {
     }
     
 
+    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        
+
+        
+    }
  
 
 }

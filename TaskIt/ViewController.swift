@@ -60,6 +60,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     
+    @IBAction func addButtonTapped(sender: UIBarButtonItem) {
+    
+        self.performSegueWithIdentifier("showTaskAdd", sender: self)
+    
+    }
+    
     
     // which table view cell we should return for each row
     

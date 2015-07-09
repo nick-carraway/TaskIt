@@ -31,10 +31,6 @@ class Date {
         dateStringFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateStringFormatter.stringFromDate(date)
         
-        
-        
-        
-        
         return ""
     }
     
