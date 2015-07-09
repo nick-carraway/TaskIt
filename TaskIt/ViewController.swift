@@ -38,6 +38,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showTaskDetail" {
+            let detailVC: TaskDetailViewController = segue.destinationViewController as TaskDetailViewController
+            let indexPath = self.tableView.indexPathForSelectedRow()
+            let thisTask = taskArray[indexPath!.row]
+            detailVC.detailTaskModel = thisTask
+        }
+    }
+    
+    
+    
+    
     // which table view cell we should return for each row
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -70,6 +87,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // protocols are defined in another class
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         println(indexPath.row)
         
         performSegueWithIdentifier("showTaskDetail", sender: self)
