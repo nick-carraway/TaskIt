@@ -72,7 +72,7 @@
                     <connections>
                         <outlet property="tableView" destination="fWm-Kf-q5v" id="HsR-rX-EEj"/>
                         <segue destination="ZJq-5q-vwt" kind="show" identifier="showTaskDetail" id="T6e-s4-d2x"/>
-                        <segue destination="wIz-A6-Zj7" kind="presentation" identifier="showTaskAdd" id="AeR-0z-xz9"/>
+                        <segue destination="wIz-A6-Zj7" kind="presentation" identifier="showTaskAdd" id="enN-mA-KlQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -110,9 +110,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="LnE-p3-PTq"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="8Lc-KN-YC2">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="dDK-Uq-OkM">
                             <connections>
@@ -130,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahY-Y1-tkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="372"/>
+            <point key="canvasLocation" x="1876" y="72"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="Os9-ig-aRw">
@@ -158,6 +156,9 @@
                                 <state key="normal" title="Add Task">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addTaskButtonTapped:" destination="wIz-A6-Zj7" eventType="touchUpInside" id="GQJ-Hs-tND"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Mg-fx-eax">
                                 <rect key="frame" x="16" y="123" width="280" height="30"/>
@@ -196,6 +197,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="kEg-P3-97d"/>
+                    <connections>
+                        <outlet property="dueDatePicker" destination="pb2-rf-tZl" id="dXO-tr-1hl"/>
+                        <outlet property="subTaskTextField" destination="2lh-oT-HAi" id="AwX-7O-o2o"/>
+                        <outlet property="subtaskTextField" destination="3S6-JK-fxH" id="toa-Kk-8LZ"/>
+                        <outlet property="taskTextField" destination="8Mg-fx-eax" id="swv-dI-Nzx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vMd-S3-Sn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

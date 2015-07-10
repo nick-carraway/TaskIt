@@ -87,14 +87,14 @@
 		2C0065C21B4A19D2008E16DE /* TaskIt */ = {
 			isa = PBXGroup;
 			children = (
-				2C31C36B1B4CE212007067A2 /* TaskModel.swift */,
-				2C4EAB761B4EDD0600B3A92B /* Date.swift */,
-				2C0065C51B4A19D2008E16DE /* AppDelegate.swift */,
-				2C0065C71B4A19D2008E16DE /* ViewController.swift */,
-				2CD4085A1B4DB13500B6297F /* TaskDetailViewController.swift */,
 				2C4EAB781B4F163500B3A92B /* AddTaskViewController.swift */,
+				2C0065C51B4A19D2008E16DE /* AppDelegate.swift */,
+				2C4EAB761B4EDD0600B3A92B /* Date.swift */,
 				2C0065C91B4A19D2008E16DE /* Main.storyboard */,
 				2C31C3691B4C88FB007067A2 /* TaskCell.swift */,
+				2CD4085A1B4DB13500B6297F /* TaskDetailViewController.swift */,
+				2C31C36B1B4CE212007067A2 /* TaskModel.swift */,
+				2C0065C71B4A19D2008E16DE /* ViewController.swift */,
 				2C0065CC1B4A19D2008E16DE /* Images.xcassets */,
 				2C0065CE1B4A19D2008E16DE /* LaunchScreen.xib */,
 				2C0065C31B4A19D2008E16DE /* Supporting Files */,

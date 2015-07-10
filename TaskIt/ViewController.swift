@@ -25,13 +25,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let date2 = Date.from(year: 2012, month: 1, day: 1)
         let date3 = Date.from(year: 2012, month: 1, day: 1)
         
-        let task1:TaskModel =  TaskModel(task: "Defend America", subTask: "Kill Bill", date : date1)
+        let task1:TaskModel =  TaskModel(task: "Defend America", subTask: "Kill Bill", date: date1)
         
         
-        let task2:TaskModel =  TaskModel(task: "Defeat evil", subTask: "Combat Terminator", date : date2)
+        let task2:TaskModel =  TaskModel(task: "Defeat evil", subTask: "Combat Terminator", date: date2)
 
         
-        taskArray = [task1, task2, TaskModel(task: "Exercise", subTask: "Get busy", date : date3)]
+        taskArray = [task1, task2, TaskModel(task: "Exercise", subTask: "Get busy", date: date3)]
         
         self.tableView.reloadData()
         
@@ -56,6 +56,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let thisTask = taskArray[indexPath!.row]
             detailVC.detailTaskModel = thisTask
         }
+        
+        else if segue.identifier == "showTaskAdd" {
+            let addTaskVC:AddTaskViewController = segue.destinationViewController as AddTaskViewController
+            addTaskVC.mainVC = self
+        }
+        
+        
     }
     
     
