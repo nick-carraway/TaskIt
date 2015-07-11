@@ -160,13 +160,13 @@
                                     <action selector="addTaskButtonTapped:" destination="wIz-A6-Zj7" eventType="touchUpInside" id="GQJ-Hs-tND"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Mg-fx-eax">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Mg-fx-eax" userLabel="Taks field">
                                 <rect key="frame" x="16" y="123" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2lh-oT-HAi">
-                                <rect key="frame" x="16" y="209" width="280" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2lh-oT-HAi" userLabel="Subtask field">
+                                <rect key="frame" x="16" y="210" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -200,8 +200,7 @@
                     <navigationItem key="navigationItem" id="kEg-P3-97d"/>
                     <connections>
                         <outlet property="dueDatePicker" destination="pb2-rf-tZl" id="dXO-tr-1hl"/>
-                        <outlet property="subTaskTextField" destination="2lh-oT-HAi" id="AwX-7O-o2o"/>
-                        <outlet property="subtaskTextField" destination="3S6-JK-fxH" id="toa-Kk-8LZ"/>
+                        <outlet property="subtaskTextField" destination="2lh-oT-HAi" id="Xcl-3g-PV0"/>
                         <outlet property="taskTextField" destination="8Mg-fx-eax" id="swv-dI-Nzx"/>
                     </connections>
                 </viewController>
