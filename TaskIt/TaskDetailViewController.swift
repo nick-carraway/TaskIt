@@ -21,6 +21,10 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     
     
+    @IBAction func doneBarButtonPressed(sender: UIBarButtonItem) {
+        self.navigationController?.popViewControllerAnimated(true)  
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
