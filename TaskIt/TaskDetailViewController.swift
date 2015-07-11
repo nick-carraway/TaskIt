@@ -10,6 +10,8 @@ import UIKit
 
 class TaskDetailViewController: UIViewController {
 
+    var mainVC: ViewController!
+    
     var detailTaskModel: TaskModel!
     
     @IBOutlet weak var taskTextField: UITextField!
