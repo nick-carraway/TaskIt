@@ -21,9 +21,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
         
         
-        let date1 = Date.from(year: 2012, month: 1, day: 1)
+        let date1 = Date.from(year: 2011, month: 1, day: 1)
         let date2 = Date.from(year: 2012, month: 1, day: 1)
-        let date3 = Date.from(year: 2012, month: 1, day: 1)
+        let date3 = Date.from(year: 2013, month: 1, day: 1)
         
         let task1:TaskModel =  TaskModel(task: "Defend America", subTask: "Kill Bill", date: date1)
         
@@ -42,7 +42,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.tableView.reloadData() 
+        self.tableView.reloadData()
+        
+        
+        func sortByDate(taskOne: TaskModel, taskTwo: TaskModel) -> Bool {
+            return taskOne.date.timeIntervalSince1970 < taskTwo.date.timeIntervalSince1970
+        }
+        
+        taskArray = taskArray.sorted(sortByDate)
+        
+        taskArray = taskArray.sorted {
+            
+            (taskOne: TaskModel, taskTwo: TaskModel) -> Bool in
+            
+            //comparison logic here
+            
+            return taskOne.date.timeIntervalSince1970 < taskTwo.date.timeIntervalSince1970
+            
+        }
     }
     
     
@@ -120,5 +137,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         performSegueWithIdentifier("showTaskDetail", sender: self)
         
     }
+
+
 }
 

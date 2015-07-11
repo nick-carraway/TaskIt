@@ -22,7 +22,14 @@ class TaskDetailViewController: UIViewController {
     
     
     @IBAction func doneBarButtonPressed(sender: UIBarButtonItem) {
-        self.navigationController?.popViewControllerAnimated(true)  
+
+        var task = TaskModel(task: taskTextField.text, subTask: subtaskTextField.text, date: dueDatePicker.date)
+    
+        mainVC.taskArray[mainVC.tableView.indexPathForSelectedRow()!.row] = task
+
+        self.navigationController?.popViewControllerAnimated(true)
+        
+        
     }
     
     override func viewDidLoad() {
