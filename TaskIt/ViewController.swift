@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     
-        let date1 = Date.from(year: 2011, month: 1, day: 1)
+        /* let date1 = Date.from(year: 2011, month: 1, day: 1)
         let date2 = Date.from(year: 2012, month: 1, day: 1)
         let date3 = Date.from(year: 2013, month: 1, day: 1)
         
@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         baseArray = [taskArray, completedArray]
         
-        tableView.reloadData()
+        tableView.reloadData() */
         
    
         
