@@ -7,19 +7,32 @@
 
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
 
     
     @IBOutlet weak var tableView: UITableView!
     
     //var taskArray : [TaskModel]  = []
     
-    var baseArray: [[TaskModel]] = []
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!
     
+    var fetchedResultsController:NSFetchedResultsController = NSFetchedResultsController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        fetchedResultsController = getFetchResultsController()
+        
+        fetchedResultsController.delegate = self
+        
+        fetchedResultsController.performFetch(nil)
+        
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     
         /* let date1 = Date.from(year: 2011, month: 1, day: 1)
@@ -80,9 +93,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if segue.identifier == "showTaskDetail" {
             let detailVC: TaskDetailViewController = segue.destinationViewController as TaskDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow()
-            let thisTask = baseArray[indexPath!.section][indexPath!.row]
+            let thisTask = fetchedResultsController.objectAtIndexPath(indexPath!) as TaskModel
             detailVC.detailTaskModel = thisTask
-            detailVC.mainVC = self
+   
         }
         
         else if segue.identifier == "showTaskAdd" {
@@ -105,7 +118,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
  
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return baseArray.count
+        return fetchedResultsController.sections!.count
     
     }
     
@@ -114,7 +127,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return taskArray.count
         
-        return baseArray[section].count
+        return fetchedResultsController.sections![section].numberOfObjects
     }
     
     
@@ -123,12 +136,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
-        let thisTask = baseArray[indexPath.section][indexPath.row]
+        let thisTask = fetchedResultsController.objectAtIndexPath(indexPath) as TaskModel
+        
         
         var cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("MyCell") as TaskCell
         
         cell.taskLabel.text = thisTask.task
-        cell.descriptionLabel.text = thisTask.subTask
+        cell.descriptionLabel.text = thisTask.subtask
         cell.dateLabel.text = Date.toString(date: thisTask.date)
         
         return cell
@@ -164,30 +178,46 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let thisTask = baseArray[indexPath.section][indexPath.row]
+        let thisTask = fetchedResultsController.objectAtIndexPath(indexPath) as TaskModel
+        
         
         if indexPath.section == 0 {
-    
-
-        
-        
-        var newTask = TaskModel(task: thisTask.task, subTask: thisTask.subTask, date: thisTask.date, completed: true)
-        
-
-        baseArray[1].append(newTask)
-        
+            thisTask.completed = true
         } else {
-            var newTask = TaskModel(task: thisTask.task, subTask: thisTask.subTask, date: thisTask.date, completed: false)
-            baseArray[0].append(newTask)
+            thisTask.completed = false
         }
         
-        
-        
-        baseArray[indexPath.section].removeAtIndex(indexPath.row)
-            
-        tableView.reloadData()
+        (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
             
         
     }
+    
+    
+    //NSFetchedResults controller delegate
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.reloadData()
+    }
+    
+    // Helper functions are below
+    
+    func taskFetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "TaskModel")
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        return fetchRequest
+    }
+    
+    
+    func getFetchResultsController() -> NSFetchedResultsController {
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
+        
+    }
+    
+    
+    
 }
 
